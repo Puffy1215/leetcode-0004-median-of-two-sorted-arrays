@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "leetcode-0004-median-of-two-sorted-arrays"
+version = "0.1.0"
+description = ""
+authors = ["Andy Xie"]
+readme = "README.md"
+packages = [{include = "leetcode_0004_median_of_two_sorted_arrays"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.3"
+mypy = "^1.8.0"
+black = "^23.9.1"
+pylint = "^3.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
