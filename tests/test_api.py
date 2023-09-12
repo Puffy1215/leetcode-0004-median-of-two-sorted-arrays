@@ -1,5 +1,8 @@
 """Tests API for solving problem Median of Two Sorted Arrays"""
 
+import random
+from typing import Callable
+
 import pytest
 
 from leetcode_0004_median_of_two_sorted_arrays import api
@@ -16,3 +19,23 @@ def test_median_of_two_sorted_arrays(result: int, nums1: list[int], nums2: list[
     """Tests solution for problem Median of Two Sorted Arrays"""
 
     assert api.median_of_two_sorted_arrays(nums1, nums2) == result
+
+
+NumsRandResult = tuple[list[int], list[int]]
+NumsRandType = Callable[[], NumsRandResult]
+
+
+@pytest.fixture
+def nums_rand() -> NumsRandType:
+    """Fixture to generate random nums"""
+
+    def _nums_rand() -> NumsRandResult:
+        l = random.randint(api.LEN_MIN + 1, api.LEN_MAX)
+        m = random.randint(api.LEN_MIN + 1, l)
+        n = l - m
+        nums = [random.randint(api.NUM_MIN, api.NUM_MAX) for _ in range(l)]
+        nums1 = sorted(nums[:m])
+        nums2 = sorted(nums[m:])
+        return nums1, nums2
+
+    return _nums_rand
