@@ -32,7 +32,6 @@ def nums_rand() -> NumsRandType:
     def _nums_rand() -> NumsRandResult:
         l = random.randint(api.LEN_MIN + 1, api.LEN_MAX)
         m = random.randint(api.LEN_MIN + 1, l)
-        n = l - m
         nums = [random.randint(api.NUM_MIN, api.NUM_MAX) for _ in range(l)]
         nums1 = sorted(nums[:m])
         nums2 = sorted(nums[m:])
