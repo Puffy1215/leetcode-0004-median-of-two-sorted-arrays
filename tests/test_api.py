@@ -1,6 +1,7 @@
 """Tests API for solving problem Median of Two Sorted Arrays"""
 
 import random
+import statistics
 from typing import Callable
 
 import pytest
@@ -38,3 +39,17 @@ def nums_rand() -> NumsRandType:
         return nums1, nums2
 
     return _nums_rand
+
+@pytest.mark.parametrize("run_count", range(10))
+def test_median_of_two_sorted_arrays_rand(
+    run_count: int,
+    nums_rand: NumsRandType,  # pylint: disable=redefined-outer-name
+) -> None:
+    """Tests solution for problem Median of Two Sorted Arrays with random nums1 and nums2"""
+
+    random.seed(run_count)
+
+    nums1, nums2 = nums_rand()
+    result = statistics.median(sorted(nums1 + nums2))
+
+    test_median_of_two_sorted_arrays(result, nums1, nums2)
