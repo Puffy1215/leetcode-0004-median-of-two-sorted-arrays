@@ -24,9 +24,13 @@ def _check_preconditions(nums1: list[int], nums2: list[int]) -> bool:
     return True
 
 
+def _recursive_median_of_two_sorted_arrays(nums1: list[int], nums2: list[int]) -> int:
+    pass
+
+
 def median_of_two_sorted_arrays(nums1: list[int], nums2: list[int]) -> int:
     """Solves problem Median of Two Sorted Arrays"""
 
     assert _check_preconditions(nums1, nums2)
 
-    pass
+    return _recursive_median_of_two_sorted_arrays(nums1, nums2)
