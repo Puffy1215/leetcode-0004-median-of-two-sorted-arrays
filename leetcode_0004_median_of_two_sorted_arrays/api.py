@@ -45,6 +45,20 @@ def _recursive_median_of_two_sorted_arrays(nums1: list[int], nums2: list[int]) -
     if m <= 2:
         return _base_case_median_of_two_sorted_arrays(nums1, nums2)
     
+    x = statistics.median(nums1)
+    y = statistics.median(nums2)
+
+    if x == y:
+        return x
+    elif x >= y:
+        nums1, nums2 = nums2, nums1
+
+    trim = (m - 1)//2
+    nums1 = nums1[:-trim]
+    nums2 = nums2[trim:]
+
+    return _recursive_median_of_two_sorted_arrays(nums1, nums2)
+
 
 def median_of_two_sorted_arrays(nums1: list[int], nums2: list[int]) -> int:
     """Solves problem Median of Two Sorted Arrays"""
