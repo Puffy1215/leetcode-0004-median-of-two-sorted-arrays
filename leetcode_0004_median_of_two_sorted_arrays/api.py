@@ -1,6 +1,6 @@
 """API for solving problem Median of Two Sorted Arrays"""
 
-import statistics
+from statistics import median
 
 LEN_MAX = 1000
 LEN_MIN = 0
@@ -26,15 +26,20 @@ def _check_preconditions(nums1: list[int], nums2: list[int]) -> bool:
     return True
 
 
+LEN_BASE = 2
+
 def _base_case_median_of_two_sorted_arrays(nums1: list[int], nums2: list[int]) -> int:
     m = len(nums1)
     n = len(nums2)
 
     assert m <= n
-    assert m <= 2
+    assert m <= LEN_BASE
 
     if m == 0:
-        return statistics.median(nums2)
+        return median(nums2)
+    
+    midpoint = (n - 1) / 2
+
 
 
 def _recursive_median_of_two_sorted_arrays(nums1: list[int], nums2: list[int]) -> int:
@@ -42,11 +47,11 @@ def _recursive_median_of_two_sorted_arrays(nums1: list[int], nums2: list[int]) -
         nums1, nums2 = nums2, nums1
     
     m = len(nums1)
-    if m <= 2:
+    if m <= LEN_BASE:
         return _base_case_median_of_two_sorted_arrays(nums1, nums2)
     
-    x = statistics.median(nums1)
-    y = statistics.median(nums2)
+    x = median(nums1)
+    y = median(nums2)
 
     if x == y:
         return x
