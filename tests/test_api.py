@@ -1,7 +1,7 @@
 """Tests API for solving problem Median of Two Sorted Arrays"""
 
 import random
-import statistics
+from statistics import median
 from typing import Callable
 
 import pytest
@@ -50,6 +50,6 @@ def test_median_of_two_sorted_arrays_rand(
     random.seed(run_count)
 
     nums1, nums2 = nums_rand()
-    result = statistics.median(sorted(nums1 + nums2))
+    result = median(sorted(nums1 + nums2))
 
     test_median_of_two_sorted_arrays(result, nums1, nums2)
