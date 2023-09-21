@@ -1,5 +1,6 @@
 """API for solving problem Median of Two Sorted Arrays"""
 
+from math import ceil, floor
 from statistics import median
 
 LEN_MAX = 1000
@@ -39,6 +40,10 @@ def _base_case_median_of_two_sorted_arrays(nums1: list[int], nums2: list[int]) -
         return median(nums2)
     
     midpoint = (n - 1) / 2
+    offset = max(ceil(midpoint - LEN_BASE), 0)
+    nums2 = nums2[offset:n-offset]
+
+    return median(sorted(nums1+nums2))
 
 
 
