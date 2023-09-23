@@ -64,8 +64,8 @@ def _recursive_median_of_two_sorted_arrays(nums1: list[int], nums2: list[int]) -
         nums1, nums2 = nums2, nums1
 
     trim = (m - 1)//2
-    nums1 = nums1[:-trim]
-    nums2 = nums2[trim:]
+    nums1 = nums1[trim:]
+    nums2 = nums2[:-trim]
 
     return _recursive_median_of_two_sorted_arrays(nums1, nums2)
 
